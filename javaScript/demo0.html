@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Event Bubbling Example</title>
+        <style>
+            body {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            h2 {
+                margin-top: 100px;
+            }
+            #form {
+                padding: 40px;
+                background-color: beige;
+                border: 1px solid black;
+                cursor: pointer;
+            }
+            #div {
+                padding: 20px;
+                background-color: blue;
+                color: white;
+                border: 1px solid red;
+            }
+            #p {
+                padding: 10px;
+                background-color: beige;
+                color: black;
+                border: 1px solid red;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Bubbling example</h2>
+        <form class="demo" id="form">The form element
+            <div class="demo" id="div">The div element
+                <p class="demo" id="p">The p element</p>
+            </div>
+        </form>
+
+    <script>
+        // Bubbling event propagation
+        document.querySelectorAll("*").forEach((elem) => {
+            elem.addEventListener("click", () => {
+                alert(`Bubbling: ${elem.tagName}`)
+            })
+        });
+
+        // Capture event propagation; not often used
+        // document.querySelectorAll("*").forEach((elem, index) => {
+        //     elem.addEventListener("click", () => {
+        //         alert(`Capturing: ${elem.tagName}`)
+        //     }, true)
+        // });
+
+    </script>
+
+    </body>
+</html>

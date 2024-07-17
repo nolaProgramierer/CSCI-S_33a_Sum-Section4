@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Propagation Example</title>
+    <style>
+        #container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 3em;
+        }
+        #parent {
+            width: 200px;
+            height: 200px;
+            background-color: lightgray;
+            padding: 20px;
+            border: 1px solid black;
+            
+        }
+        .child {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="parent">
+            Parent
+            <div class="child" id="child1">Child 1</div>
+            <div class="child" id="child2">Child 2</div>
+        </div>
+    </div>
+    
+
+    <script>
+        document.getElementById('parent').addEventListener('click', function(event) {
+            console.log('Parent clicked');
+        });
+
+        document.getElementById('child1').addEventListener('click', function(event) {
+            console.log('Child 1 clicked');
+            // Uncomment the next line to stop the event from bubbling up to the parent
+            // event.stopPropagation();
+        });
+
+        document.getElementById('child2').addEventListener('click', function(event) {
+            console.log('Child 2 clicked');
+            // Uncomment the next line to stop the event from bubbling up to the parent
+            // event.stopPropagation();
+        });
+    </script>
+</body>
+</html>

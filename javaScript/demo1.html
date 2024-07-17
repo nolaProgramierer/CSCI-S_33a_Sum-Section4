@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>DOM target example</title>
+        <style>
+            body {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <h2>Target example</h2>
+        <div id="parent">
+            <button id="child">Click me</button>
+        </div>
+
+    <script>
+        document.querySelector("#parent").addEventListener("click", (e) => {
+            console.log("currentTarget:", e.currentTarget.id);
+            console.log("target:", e.target.id);
+        });
+    </script>
+
+    </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta lang="en">
+        <meta charset="utf-8">
+        <link href="style.css" rel="stylesheet">
+        <style>
+            #container {
+                display: flex;
+                flex-direction: column;
+                justify-items: center;
+            }
+            #parent-list {
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container"> 
+            <div>
+                <h1>Event Delegation</h1>
+                <ul id="parent-list">
+                    <li id="item_1">Item 1</li>
+                    <li id="item_2">Item 2</li>
+                    <li id="item_3">Item 3</li>
+                    <li id="item_4">Item 4</li>
+                    <li id="item_5">Item 5</li>
+                    <li id="item_6">Item 6</li>
+                  </ul>
+            </div>
+                
+        </div>
+        <script>
+           let parentList = document.querySelector("#parent-list");
+
+            // Individual event listener
+            // listItem = document.querySelector("#item_1").addEventListener('click', function(evt) {
+            //     console.log(`Individual eventlistener on ${evt.target.id.replace("item_", "")}`)
+            // });
+
+            
+            // Listener on parent element for all children
+            parentList.addEventListener('click', (evt) => {
+                if (evt.target && evt.target.nodeName == "LI") {
+                    console.log("List item " + evt.target.id.replace("item_", "") + " was clicked!");
+                    console.log("Current target id " + evt.currentTarget.id);
+                }
+            });  
+        </script>
+  
+    </body>
+</html>

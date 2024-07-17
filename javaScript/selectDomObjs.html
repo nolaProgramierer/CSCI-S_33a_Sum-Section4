@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DOM Selection Example</title>
+<style>
+    body {
+        font-size: 2em;
+    }
+    .selected {
+        color: red;
+        font-weight: bold;
+    }
+    button {
+        background-color: blue;
+        color: white;
+        font-size: 1em;
+        border-radius: 12px;
+    }
+</style>
+</head>
+<body>
+
+<h1>Select DOM Objects Example</h1>
+
+<div id="container">
+    <p id="paragraph1">This is paragraph 1.</p>
+    <p class="text">This is paragraph 2.</p>
+    <p class="text">This is paragraph 3.</p>
+    <button id="button" type="text">Click to toggle text</button>
+</div>
+
+<script>
+    // Selecting by ID
+    var paragraph1 = document.getElementById('paragraph1');
+    // Changing color
+    paragraph1.style.color = 'blue';
+
+    //------------------------------------------------------
+    // Selecting by class name
+    var paragraphs = document.getElementsByClassName('text');
+    
+    // Use to iterate over values of iterable objects
+    
+    // This is the same as a standard for loop
+    // for (var i = 0; i < paragraphs.length; i++)
+    for (paragraph of paragraphs) {
+        // Changing font style
+        paragraph.style.fontStyle = 'italic'; 
+    }
+
+    //------------------------------------------------------
+    // Selecting elements
+    
+    var btn = document.querySelector("#button");
+    paragraphs = document.querySelectorAll(".text");
+
+    // Adding an event listener to the button element
+    btn.addEventListener('click', ()=> {
+        // For each element in the paragraphs objects assign this anonymous function
+        paragraphs.forEach((element) => {
+            element.classList.toggle("selected")
+        })
+    });
+
+</script>
+
+</body>
+</html>

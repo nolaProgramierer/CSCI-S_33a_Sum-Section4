@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Event Bubbling Example</title>
+        <style>
+            body {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            #ancestor {
+                padding: 40px;
+                background-color: gray;
+                border: 1px solid black;
+                cursor: pointer;
+            #parent {
+                padding: 40px;
+                background-color: beige;
+                border: 1px solid black;
+                cursor: pointer;
+            }
+            #child {
+                padding: 20px;
+                background-color: blue;
+                color: white;
+                border: 1px solid red;
+            }
+           
+        </style>
+    </head>
+    <body>
+        
+        <div id="ancestor">
+            <div id="parent">
+                <div id="child">Click me</div>
+            </div>
+        </div>
+        
+
+    <script>
+
+        document.getElementById('ancestor').addEventListener('click', function(event) {
+        console.log('Ancestor clicked')
+        });
+
+        document.getElementById('parent').addEventListener('click', function(event) {
+        console.log('Parent clicked')
+
+        });
+
+        document.getElementById('child').addEventListener('click', function(event) {
+        console.log('Child clicked');
+        });
+
+    </script>
+
+    </body>
+</html>

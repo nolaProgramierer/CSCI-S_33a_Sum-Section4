@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Object Example</title>
+    <style>
+        #container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 3em;
+        }
+        #parentDiv {
+            width: 200px;
+            height: 200px;
+            background-color: lightgray;
+            padding: 20px;
+        }
+        #childDiv {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="parentDiv">
+            Parent Div
+            <div id="childDiv">Child Div</div>
+        </div>
+        <button id="submitButton">Submit</button>
+    </div>
+    
+
+    <script>
+        document.getElementById('childDiv').addEventListener('click', function(event) {
+            console.log('Event Type:', event.type);
+            console.log('Target Element:', event.target);
+            console.log('Current Target:', event.currentTarget);
+            console.log('Mouse X:', event.clientX, 'Mouse Y:', event.clientY);
+            
+            // event.stopPropagation(); // Prevent the event from bubbling up to the parent div
+        });
+
+        document.getElementById('parentDiv').addEventListener('click', function(event) {
+            console.log('Parent Div Clicked');
+        });
+
+        document.getElementById('submitButton').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent the default action of the button (if it's in a form)
+            console.log('Button Clicked - Default action prevented');
+        });
+    </script>
+</body>
+</html>

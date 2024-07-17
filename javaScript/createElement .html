@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+        <style>
+            #container {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+            }
+            ul {
+                list-style-type: none;
+            }
+            .list-style {
+                background-color: beige;
+                border: 1px solid black;
+                padding: 5px 10px 5px 10px;
+            }
+            button {
+                color: white;
+                background-color: blue;
+            }
+            #start-over {
+                display: none;
+            }
+        </style>
+
+    </head>
+    <body>
+
+        <div id="container">
+            <h2>Create List Demo</h2>
+            <button id="click-me">Make a List</button>
+            <button id="start-over">Let's do it again</button>
+            <ul id="my-list">
+                <!--JS goes here!-->
+            </ul>
+        </div>
+        
+        <script>
+
+            myArr = ["list1", "list2", "list3", "list4", "list5", "list6", "list7"]
+
+            // Get the button element which is initiating the event
+            myList = document.getElementById("click-me");
+            // Add event listener to the element which calls a function on an event
+            myList.addEventListener("click", makeList);
+
+            // Add event listener to a hidden button
+            document.querySelector("#start-over").addEventListener("click", doAgain);
+
+
+            // Functions to be call by event listeners
+            function makeList() {
+                // Return the ul element
+                ulList = document.querySelector("#my-list");
+
+                myArr.forEach((element, index) => {
+                    // Create the element
+                    listItem = document.createElement("li");
+                    // Add an array element to the textContext
+                    listItem.textContent = element;
+                    // Add a style
+                    listItem.classList.add("list-style");
+                    // Set an attribute
+                    listItem.setAttribute("id", index + 1);
+
+                    // Add an event listener for mouseover
+                    listItem.addEventListener('mouseover', (event) => changeToBlue(event));
+                    // Add evemnt listener for mouseout
+                    listItem.addEventListener("mouseout", (event) => changeToBeige(event))
+                    
+                    // Append an item to the list
+                    ulList.append(listItem);
+
+                    // Remove event listener
+                    myList.removeEventListener("click", makeList);
+                    // Hide button
+                    document.querySelector("#click-me").style.display = "none";
+                    // Show another button
+                    document.querySelector("#start-over").style.display = "block";
+                    
+            });
+            } 
+
+            function doAgain() {
+                // Reload the page
+                location.reload()
+                document.querySelector("#click-me").style.display = "block";
+                document.querySelector("#start-over").style.display = "none";
+            }
+
+            function changeToBlue(e) {
+                e.target.style.backgroundColor = "blue";
+                e.target.style.color = "white";
+                console.log(e.target.id)
+            }
+
+            function changeToBeige(e) {
+                e.target.style.backgroundColor = "beige";
+                e.target.style.color = "black";
+            }
+
+        </script>
+    </body>
+</html>
